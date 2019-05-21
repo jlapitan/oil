@@ -48,12 +48,12 @@ export const listSnippet = (list) => {
                     <svg class='as-oil-icon-plus' width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5.675 4.328H10v1.344H5.675V10h-1.35V5.672H0V4.328h4.325V0h1.35z" fill="#0068FF" fill-rule="evenodd" fill-opacity=".88"/>
                     </svg>
-                    <svg class='as-oil-icon-minus' style='display: none;' width="10" height="5" viewBox="0 0 10 5" xmlns="http://www.w3.org/2000/svg">
+                    <svg class='as-oil-icon-minus' style='display: none !important' width="10" height="5" viewBox="0 0 10 5" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 0h10v1.5H0z" fill="#3B7BE2" fill-rule="evenodd" opacity=".88"/>
                     </svg>
                     <span class='as-oil-third-party-name'>${element.name}</span>
                 </span>
-                <div class='as-oil-third-party-toggle-part' style='display: none;'>
+                <div class='as-oil-third-party-toggle-part' style='display: none !important'>
                 <p class='as-oil-third-party-description' >${element.description}</p>
                   <div class='as-oil-third-party-link'>${element.link}</div>
                 </div>
@@ -70,11 +70,11 @@ function toggleViewElements(element) {
   let iconPlus = element.children[1];
   let descriptionPart = element.nextElementSibling;
 
-  const styleDisplayInlineBlock = 'display: inline-block; animation: fadein 0.5s';
-  const styleDisplayNone = 'display: none';
+  const styleDisplayInlineBlock = 'display: inline-block; animation: fadein 0.5s !important';
+  const styleDisplayNone = 'display: none !important';
 
   if (descriptionPart.style.display === 'none') {
-    descriptionPart.setAttribute('style', 'display: block; animation: fadein 0.5s');
+    descriptionPart.setAttribute('style', 'display: block; animation: fadein 0.5s !important');
     iconPlus.setAttribute('style', styleDisplayInlineBlock);
     iconMinus.setAttribute('style', styleDisplayNone);
   } else {

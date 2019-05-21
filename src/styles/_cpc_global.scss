@@ -4,125 +4,129 @@ $slider-size: 20px;
 $slider-padding: 3px;
 
 #oil-preference-center {
-  overflow: hidden;
+  overflow: hidden !important;
 
   .as-oil-back-button {
-    display: none;
+    display: none !important;
   }
 }
 
 #as-oil-cpc {
   &.as-oil-content-overlay {
     @include media('<=849px') {
-      padding: 2rem 1rem;
+      padding: 2em 1em !important;
     }
   }
 }
 
-.as-oil-cpc__status {
-  position: absolute;
-  top: 5px;
-  left: -($slider-size + 5);
-  color: $btn-primary;
-  font-weight: 500;
-}
+.as-oil.cleanslate {
 
-.as-oil-cpc__slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: $slider-background-grey;
-  transition: .4s;
-  border-radius: 17px;
-
-  &:before {
-    position: absolute;
-    content: "";
-    height: $slider-size;
-    width: $slider-size;
-    left: $slider-padding;
-    bottom: $slider-padding;
-    background-color: $slider-background-circle;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
-    transition: .4s;
-    border-radius: 50%;
-  }
-}
-
-.as-oil-cpc__middle {
-  flex: 1 1 auto;
-  padding: 24px;
-  display: inline-block;
-
-  overflow: scroll;
-  max-height: 500px; /* The Fallback */
-  height: 30vh;
-  width: 100%;
-
-  @include media('<=phone') {
-    padding: 0;
-  }
-}
-
-.checkmark {
-  display: inline-block;
-  position: absolute;
-}
-
-.checkmark-on {
-  &::after {
-    border: solid #000;
-    border-color: rgba(52, 140, 32, 0.6);
-    border-width: 0 2px 2px 0;
-    content: '';
-    display: block;
-    height: 12px;
-    transform: rotate(45deg);
-    width: 6px;
-  }
-}
-
-.checkmark-off {
-  height: 14px;
-  width: 14px;
-
-  &::before,
-  &::after {
-    background: rgba(255, 0, 0, 0.6);
-    content: '';
-    height: 2px;
-    left: 0;
-    margin-left: -3px;
-    margin-top: 3px;
-    position: absolute;
-    top: 50%;
-    width: 100%;
+  .as-oil-cpc__status {
+    position: absolute !important;
+    top: 5px !important;
+    left: -($slider-size + 5) !important;
+    color: $btn-primary !important;
+    font-weight: 500 !important;
   }
 
-  &::before {
-    transform: rotate(45deg);
-  }
-  &::after {
-    transform: rotate(-45deg);
-  }
-}
+  .as-oil-cpc__slider {
+    position: absolute !important;
+    cursor: pointer !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: $slider-background-grey !important;
+    transition: .4s !important;
+    border-radius: 17px !important;
 
-.as-oil-center {
-  text-align: center;
-}
+    &:before {
+      position: absolute !important;
+      content: "" !important;
+      height: $slider-size !important;
+      width: $slider-size !important;
+      left: $slider-padding !important;
+      bottom: $slider-padding !important;
+      background-color: $slider-background-circle !important;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08) !important;
+      transition: .4s !important;
+      border-radius: 50% !important;
+    }
+  }
 
-.as-oil-margin-top {
-  margin-top: 1rem;
+  .as-oil-cpc__middle {
+    flex: 1 1 auto !important;
+    padding: 24px !important;
+    display: inline-block !important;
+
+    overflow: scroll !important;
+    max-height: 500px !important; /* The Fallback */
+    height: 30vh !important;
+    width: 100% !important;
+
+    @include media('<=phone') {
+      padding: 0 !important;
+    }
+  }
+
+  .checkmark {
+    display: inline-block !important;
+    position: absolute !important;
+  }
+
+  .checkmark-on {
+    &::after {
+      border: solid #000 !important;
+      border-color: rgba(52, 140, 32, 0.6) !important;
+      border-width: 0 2px 2px 0 !important;
+      content: '' !important;
+      display: block !important;
+      height: 12px !important;
+      transform: rotate(45deg) !important;
+      width: 6px !important;
+    }
+  }
+
+  .checkmark-off {
+    height: 14px !important;
+    width: 14px !important;
+
+    &::before,
+    &::after {
+      background: rgba(255, 0, 0, 0.6) !important;
+      content: '' !important;
+      height: 2px !important;
+      left: 0 !important;
+      margin-left: -3px !important;
+      margin-top: 3px !important;
+      position: absolute !important;
+      top: 50% !important;
+      width: 100% !important;
+    }
+
+    &::before {
+      transform: rotate(45deg) !important;
+    }
+
+    &::after {
+      transform: rotate(-45deg) !important;
+    }
+  }
+
+  .as-oil-center {
+    text-align: center !important;
+  }
+
+  .as-oil-margin-top {
+    margin-top: 1em !important;
+  }
 }
 
 @mixin space-out($min, $max) {
   @for $i from $min through $max {
     &:first-child:nth-last-child(#{$i}),
     &:first-child:nth-last-child(#{$i}) ~ & {
-      width: 1 / $i * 100%;
+      width: 1 / $i * 100% !important;
     }
   }
 }

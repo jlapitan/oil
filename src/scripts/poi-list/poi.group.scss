@@ -3,86 +3,91 @@
 /**
  * POI Group list
  */
-.as-oil-poi-group-list-wrapper {
-  @include media('<=phone') {
-    min-height: 300px;
-    z-index: 100;
-    padding: 16px 12px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    background-color: #fafafa;
-    box-shadow: 0 -8px 20px 0 rgba(0, 0, 0, .2);
+.as-oil.cleanslate {
 
-    .as-oil__heading, .as-oil__intro-txt {
-      text-align: left;
-    }
-  }
-
-  .as-oil-poi-group-list {
-    overflow: auto;
-    overflow-y: scroll;
-    max-height: 200px;
-  }
-
-  .as-oil-l-buttons-light {
-    @include media('>phone') {
-      float: right;
-    }
-
+  .as-oil-poi-group-list-wrapper {
     @include media('<=phone') {
-      background: $background-color-light;
-      padding: 8px;
-      bottom: 0;
-      left: 0;
+      min-height: 300px !important;
+      z-index: 100 !important;
+      padding: 16px 12px !important;
+      border-top-left-radius: 4px !important;
+      border-top-right-radius: 4px !important;
+      background-color: #fafafa !important;
+      box-shadow: 0 -8px 20px 0 rgba(0, 0, 0, .2) !important;
+
+      .as-oil__heading, .as-oil__intro-txt {
+        text-align: left !important;
+      }
+    }
+
+    .as-oil-poi-group-list {
+      overflow: auto !important;
+      overflow-y: scroll !important;
+      max-height: 200px !important;
+    }
+
+    .as-oil-l-buttons-light {
+      @include media('>phone') {
+        float: right !important;
+      }
+
+      @include media('<=phone') {
+        background: $background-color-light !important;
+        padding: 8px !important;
+        bottom: 0 !important;
+        left: 0 !important;
+      }
+    }
+
+    .as-oil-l-buttons-dark {
+      @include media('>phone') {
+        float: right !important;
+      }
+
+      @include media('<=phone') {
+        background: $background-color-dark !important;
+        padding: 8px !important;
+        bottom: 0 !important;
+        left: 0 !important;
+      }
     }
   }
 
-  .as-oil-l-buttons-dark {
-    @include media('>phone') {
-      float: right;
+  //third party cookie
+  .as-oil-third-party-list-element {
+    border-bottom: 1px #d8d8d8 solid !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 8px !important;
+
+    .as-oil-third-party-toggle-part {
+      margin-left: 16px !important;
     }
 
-    @include media('<=phone') {
-      background: $background-color-dark;
-      padding: 8px;
-      bottom: 0;
-      left: 0;
+    .as-oil-third-party-name {
+      font-weight: bold !important;
+      cursor: pointer !important;
     }
-  }
-}
 
-//third party cookie
-.as-oil-third-party-list-element {
-  border-bottom: 1px #d8d8d8 solid;
-  padding-bottom: 8px;
-  margin-bottom: 8px;
+    .as-oil-third-party-description, .as-oil-third-party-purpose {
+      font-size: 12px !important;
+    }
 
-  .as-oil-third-party-toggle-part {
-    margin-left: 16px;
-  }
+    .as-oil-third-party-link {
+      color: $background-color-dark !important;
+      font-size: 12px !important;
+      opacity: .5 !important;
+      text-decoration: none !important;
 
-  .as-oil-third-party-name {
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .as-oil-third-party-description, .as-oil-third-party-purpose {
-    font-size: 12px;
-  }
-  .as-oil-third-party-link {
-    color: $background-color-dark;
-    font-size: 12px;
-    opacity: .5;
-    text-decoration: none;
-
-    .dark & {
-      color: $text-color-primary-dark;
+      .dark & {
+        color: $text-color-primary-dark !important;
+      }
     }
   }
 }
 
 @keyframes fadein {
   from {
-    opacity: 0;
+    opacity: 0 !important;
   }
   to {
     opacity: 1
