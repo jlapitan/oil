@@ -145,27 +145,27 @@ function attachUtilityFunctionsToWindowObject() {
     });
   });
 
-  setGlobalOilObject('triggerOptIn', () => {
-    loadLocale(userview_modal => {
-      userview_modal.handleOptIn();
-    });
-  });
-
-  setGlobalOilObject('triggerSoiOptIn', () => {
-    loadLocale(userview_modal => {
-      userview_modal.handleSoiOptIn();
-    });
-  });
-
-  setGlobalOilObject('triggerPoiOptIn', () => {
-    loadLocale(userview_modal => {
-      userview_modal.handlePoiOptIn();
-    });
-  });
-
-  setGlobalOilObject('triggerOptOut', () => {
-    handleOptOut();
-  });
+  // setGlobalOilObject('triggerOptIn', () => {
+  //   loadLocale(userview_modal => {
+  //     userview_modal.handleOptIn();
+  //   });
+  // });
+  //
+  // setGlobalOilObject('triggerSoiOptIn', () => {
+  //   loadLocale(userview_modal => {
+  //     userview_modal.handleSoiOptIn();
+  //   });
+  // });
+  //
+  // setGlobalOilObject('triggerPoiOptIn', () => {
+  //   loadLocale(userview_modal => {
+  //     userview_modal.handlePoiOptIn();
+  //   });
+  // });
+  //
+  // setGlobalOilObject('triggerOptOut', () => {
+  //   handleOptOut();
+  // });
 
   setGlobalOilObject('applyGDPR', () => {
     setGdprApplies(true);

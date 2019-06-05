@@ -43,16 +43,16 @@ describe('core_oil', () => {
     verifyThatGlobalOilObjectIsSet(8, 'showPreferenceCenter', 'loadLocale');
     verifyThatGlobalOilObjectIsSet(8, 'showPreferenceCenter', 'oilShowPreferenceCenter');
 
-    verifyThatGlobalOilObjectIsSet(9, 'triggerOptIn', 'loadLocale');
-    verifyThatGlobalOilObjectIsSet(9, 'triggerOptIn', 'handleOptIn');
+    // verifyThatGlobalOilObjectIsSet(9, 'triggerOptIn', 'loadLocale');
+    // verifyThatGlobalOilObjectIsSet(9, 'triggerOptIn', 'handleOptIn');
 
-    verifyThatGlobalOilObjectIsSet(10, 'triggerSoiOptIn', 'loadLocale');
-    verifyThatGlobalOilObjectIsSet(10, 'triggerSoiOptIn', 'handleSoiOptIn');
+    // verifyThatGlobalOilObjectIsSet(10, 'triggerSoiOptIn', 'loadLocale');
+    // verifyThatGlobalOilObjectIsSet(10, 'triggerSoiOptIn', 'handleSoiOptIn');
 
-    verifyThatGlobalOilObjectIsSet(11, 'triggerPoiOptIn', 'loadLocale');
-    verifyThatGlobalOilObjectIsSet(11, 'triggerPoiOptIn', 'handlePoiOptIn');
+    // verifyThatGlobalOilObjectIsSet(11, 'triggerPoiOptIn', 'loadLocale');
+    // verifyThatGlobalOilObjectIsSet(11, 'triggerPoiOptIn', 'handlePoiOptIn');
 
-    verifyThatGlobalOilObjectIsSet(12, 'triggerOptOut', 'handleOptOut');
+    // verifyThatGlobalOilObjectIsSet(12, 'triggerOptOut', 'handleOptOut');
 
     verifyThatGlobalOilObjectIsSet(13, 'applyGDPR', 'setGdprApplies');
     verifyThatGlobalOilObjectIsSet(13, 'applyGDPR', 'initOilLayer');
