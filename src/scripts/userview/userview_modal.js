@@ -1,4 +1,5 @@
-import '../../styles/modal.scss';
+// import '../../styles/modal.scss';
+import '../../styles/modal_muriel.scss';
 import { getGlobalOilObject, isObject, sendEventToHostSite } from '../core/core_utils';
 import { removeSubscriberCookies } from '../core/core_cookies';
 import {
@@ -19,15 +20,17 @@ import {
 } from '../core/core_constants';
 import { oilOptIn, oilPowerOptIn } from './userview_optin';
 import { deActivatePowerOptIn } from '../core/core_poi';
-import { oilDefaultTemplate } from './view/oil.default';
+// import { oilDefaultTemplate } from './view/oil.default';
+import { oilDefaultTemplate } from './view/oil.default.muriel';
 import { oilNoCookiesTemplate } from './view/oil.no.cookies';
-import * as AdvancedSettingsStandard from './view/oil.advanced.settings.standard';
+// import * as AdvancedSettingsStandard from './view/oil.advanced.settings.standard';
+import * as AdvancedSettingsStandard from './view/oil.advanced.settings.standard.muriel';
 import * as AdvancedSettingsTabs from './view/oil.advanced.settings.tabs';
 import { logError, logInfo } from '../core/core_log';
 import { getCpcType, getTheme, getTimeOutValue, isOptoutConfirmRequired, isPersistMinimumTracking } from './userview_config';
 import { gdprApplies, getAdvancedSettingsPurposesDefault, isPoiActive } from '../core/core_config';
 import { applyPrivacySettings, getPrivacySettings, getSoiConsentData } from './userview_privacy';
-import { activateOptoutConfirm } from './userview_optout_confirm';
+// import { activateOptoutConfirm } from './userview_optout_confirm';
 import { getPurposeIds, loadVendorListAndCustomVendorList } from '../core/core_vendor_lists';
 import { manageDomElementActivation } from '../core/core_tag_management';
 import { sendConsentInformationToCustomVendors } from '../core/core_custom_vendors';
@@ -171,7 +174,7 @@ function findAdvancedSettingsInlineTemplate() {
 
 function attachCpcEventHandlers() {
   if (isOptoutConfirmRequired()) {
-    activateOptoutConfirm();
+    // activateOptoutConfirm();
   }
 
   const cpcType = getCpcType();
