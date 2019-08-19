@@ -6,7 +6,8 @@ export const DEFAULT_VENDOR_LIST = {
   vendorListVersion: 36,
   maxVendorId: 380,
   lastUpdated: '2018-05-30T16:00:15Z',
-  purposeIds: [1, 2, 3, 4, 5]
+  purposeIds: [1, 2, 3, 4, 5],
+  featureIds: [1, 2, 3]
 };
 
 export const DEFAULT_CUSTOM_VENDOR_LIST = {
@@ -79,6 +80,14 @@ export function getPurposes() {
 
 export function getPurposeIds() {
   return getPurposes().map(({ id }) => id);
+}
+
+export function getFeatures() {
+  return cachedVendorList ? cachedVendorList.features : expandIdsToObjects(DEFAULT_VENDOR_LIST.featureIds);
+}
+
+export function getFeatureIds() {
+  return getFeatures().map(({ id }) => id);
 }
 
 export function getVendors() {

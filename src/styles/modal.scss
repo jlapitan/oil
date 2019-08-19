@@ -301,35 +301,42 @@
   }
 
   .as-oil__btn-cpc {
-    float: right !important;
-    min-height: auto !important;
-    min-width: 135px !important;
-    margin: 0.75em 0 !important;
-    padding: 4px !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    text-decoration: none !important;
-    background: transparent !important;
-    border: none !important;
-    border-bottom: 1px solid !important;
-    border-radius: 0 !important;
-    cursor: pointer !important;
-    box-shadow: none !important;
+    @include btn-blue;
+    transition: opacity 0.8s ease 0s !important;
+    margin-top: 10px !important;
 
-    @extend %button-theme;
-
-    @include media('<=phone') {
-      float: none !important;
-      width: 100% !important;
-      font-size: 0.75em !important;
-      border-bottom: none !important;
-      margin: 0 !important;
-      padding: 0 !important;
+    &.as-oil__btn-cpc-clicked {
+      opacity: 0.3 !important;
     }
-
-    @include media('>phone', '<desktop') {
-      float: none !important;
-    }
+    //float: right !important;
+    //min-height: auto !important;
+    //min-width: 135px !important;
+    //margin: 0.75em 0 !important;
+    //padding: 4px !important;
+    //font-size: 14px !important;
+    //font-weight: 400 !important;
+    //text-decoration: none !important;
+    //background: transparent !important;
+    //border: none !important;
+    //border-bottom: 1px solid !important;
+    //border-radius: 0 !important;
+    //cursor: pointer !important;
+    //box-shadow: none !important;
+    //
+    //@extend %button-theme;
+    //
+    //@include media('<=phone') {
+    //  float: none !important;
+    //  width: 100% !important;
+    //  font-size: 0.75em !important;
+    //  border-bottom: none !important;
+    //  margin: 0 !important;
+    //  padding: 0 !important;
+    //}
+    //
+    //@include media('>phone', '<desktop') {
+    //  float: none !important;
+    //}
   }
 
   // Layout Stuff

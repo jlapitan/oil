@@ -5,7 +5,7 @@ import { getLabel, getLabelWithDefault, getTheme } from '../userview_config';
 import { getCustomPurposes, getCustomVendorListUrl } from '../../core/core_config';
 import { JS_CLASS_BUTTON_OPTIN, OIL_GLOBAL_OBJECT_NAME } from '../../core/core_constants';
 import { setGlobalOilObject } from '../../core/core_utils';
-import { getCustomVendorList, getPurposes, getVendorList, getVendorsToDisplay } from '../../core/core_vendor_lists';
+import { getCustomVendorList, getPurposes, getFeatures, getVendorList, getVendorsToDisplay } from '../../core/core_vendor_lists';
 import { BackButton, YesButton } from './components/oil.buttons';
 
 
@@ -64,6 +64,11 @@ const ContentSnippet = () => {
     </div>
     ${buildPurposeEntries(getPurposes())}
     ${buildPurposeEntries(getCustomPurposes())}
+    
+    <div class="as-oil-cpc__row-title" id="as-oil-cpc-features">
+      ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_FEATURE_DESC)}
+    </div>
+    ${buildFeatureEntries(getFeatures())}
 
     ${buildIabVendorList()}
     ${buildCustomVendorList()}
@@ -89,6 +94,16 @@ const PurposeContainerSnippet = ({id, header, text, value}) => {
             <span class="as-oil-cpc__status"></span>
             <span class="as-oil-cpc__slider"></span>
         </label>
+    </div>
+</div>`
+};
+
+const FeatureContainerSnippet = ({header, text}) => {
+  return `
+<div class="as-oil-cpc__purpose">
+    <div class="as-oil-cpc__purpose-container">
+        <div class="as-oil-cpc__purpose-header">${header}</div>
+        <div class="as-oil-cpc__purpose-text">${text}</div>
     </div>
 </div>`
 };
@@ -121,7 +136,6 @@ const buildCustomVendorList = () => {
   }
 };
 
-
 const buildIabVendorEntries = () => {
   let vendorList = getVendorList();
 
@@ -150,6 +164,21 @@ const buildCustomVendorEntries = () => {
 
 const buildVendorListEntry = (element) => {
   if (element.name) {
+    let allPurposes = getPurposes();
+    let allFeatures = getFeatures();
+
+    let purposes = element.purposeIds.map(id => {
+      return `${allPurposes.find(p => p.id === id).name}<br />`;
+    }).join('');
+
+    let legitPurposes = element.legIntPurposeIds.map(id => {
+      return `${allPurposes.find(p => p.id === id).name}<br />`;
+    }).join('');
+
+    let features = element.featureIds.map(id => {
+      return `${allFeatures.find(p => p.id === id).name}<br />`;
+    }).join('');
+
     return `
           <div class="as-oil-third-party-list-element">
               <span onclick='${OIL_GLOBAL_OBJECT_NAME}._toggleViewElements(this)'>
@@ -163,6 +192,27 @@ const buildVendorListEntry = (element) => {
               </span>
               <div class='as-oil-third-party-toggle-part' style='display: none !important;'>
                 <a class='as-oil-third-party-link' href='${element.policyUrl}'>${element.policyUrl}</a>
+                ${
+                  purposes.length === 0 ? '' :
+                    `<h4 style="margin-top: 10px !important;">Purposes:</h4>
+                    <div class="as-oil-cpc__purpose-text">
+                      ${purposes}
+                    </div>`
+                }
+                ${
+                  legitPurposes.length === 0 ? '' :
+                    `<h4 style="margin-top: 10px !important;">Legitimate Interest Purposes:</h4>
+                    <div class="as-oil-cpc__purpose-text">
+                      ${legitPurposes}
+                    </div>`
+                }
+                ${
+                  features.length === 0 ? '' :
+                    `<h4 style="margin-top: 10px !important;">Features:</h4>
+                    <div class="as-oil-cpc__purpose-text">
+                      ${features}
+                    </div>`
+                }
               </div>
             </div>
           `;
@@ -187,7 +237,18 @@ const buildPurposeEntries = (list) => {
   })).join('');
 };
 
+const buildFeatureEntries = (list) => {
+  return list.map(feature => FeatureContainerSnippet({
+    header: getLabelWithDefault(`label_cpc_feature_${formatFeatureId(feature.id)}_text`, feature.name || `Error: Missing text for feature with id ${feature.id}!`),
+    text: getLabelWithDefault(`label_cpc_feature_${formatFeatureId(feature.id)}_desc`, feature.description || '')
+  })).join('');
+};
+
 const formatPurposeId = (id) => {
+  return id < 10 ? `0${id}` : id;
+};
+
+const formatFeatureId = (id) => {
   return id < 10 ? `0${id}` : id;
 };
 
