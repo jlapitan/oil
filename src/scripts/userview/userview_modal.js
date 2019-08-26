@@ -25,7 +25,7 @@ import { oilDefaultTemplate } from './view/oil.default.muriel';
 import { oilNoCookiesTemplate } from './view/oil.no.cookies';
 // import * as AdvancedSettingsStandard from './view/oil.advanced.settings.standard';
 import * as AdvancedSettingsStandard from './view/oil.advanced.settings.standard.muriel';
-import * as AdvancedSettingsTabs from './view/oil.advanced.settings.tabs';
+// import * as AdvancedSettingsTabs from './view/oil.advanced.settings.tabs';
 import { logError, logInfo } from '../core/core_log';
 import { getCpcType, getTheme, getTimeOutValue, isOptoutConfirmRequired, isPersistMinimumTracking } from './userview_config';
 import { gdprApplies, getAdvancedSettingsPurposesDefault, isPoiActive } from '../core/core_config';
@@ -147,29 +147,31 @@ function startTimeOut() {
 }
 
 function findAdvancedSettingsTemplate() {
-  const cpcType = getCpcType();
-  switch (cpcType) {
-    case OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD:
-      return AdvancedSettingsStandard.oilAdvancedSettingsTemplate();
-    case OIL_CONFIG_CPC_TYPES.CPC_TYPE_TABS:
-      return AdvancedSettingsTabs.oilAdvancedSettingsTemplate();
-    default:
-      logError(`Found unknown CPC type '${ cpcType }'! Falling back to CPC type '${ OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD }'!`);
-      return AdvancedSettingsStandard.oilAdvancedSettingsTemplate();
-  }
+  return AdvancedSettingsStandard.oilAdvancedSettingsTemplate();
+  // const cpcType = getCpcType();
+  // switch (cpcType) {
+  //   case OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD:
+  //     return AdvancedSettingsStandard.oilAdvancedSettingsTemplate();
+  //   case OIL_CONFIG_CPC_TYPES.CPC_TYPE_TABS:
+  //     return AdvancedSettingsTabs.oilAdvancedSettingsTemplate();
+  //   default:
+  //     logError(`Found unknown CPC type '${ cpcType }'! Falling back to CPC type '${ OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD }'!`);
+  //     return AdvancedSettingsStandard.oilAdvancedSettingsTemplate();
+  // }
 }
 
 function findAdvancedSettingsInlineTemplate() {
-  const cpcType = getCpcType();
-  switch (cpcType) {
-    case OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD:
-      return AdvancedSettingsStandard.oilAdvancedSettingsInlineTemplate();
-    case OIL_CONFIG_CPC_TYPES.CPC_TYPE_TABS:
-      return AdvancedSettingsTabs.oilAdvancedSettingsInlineTemplate();
-    default:
-      logError(`Found unknown CPC type '${ cpcType }'! Falling back to CPC type '${ OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD }'!`);
-      return AdvancedSettingsStandard.oilAdvancedSettingsInlineTemplate();
-  }
+  return AdvancedSettingsStandard.oilAdvancedSettingsInlineTemplate();
+  // const cpcType = getCpcType();
+  // switch (cpcType) {
+  //   case OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD:
+  //     return AdvancedSettingsStandard.oilAdvancedSettingsInlineTemplate();
+  //   case OIL_CONFIG_CPC_TYPES.CPC_TYPE_TABS:
+  //     return AdvancedSettingsTabs.oilAdvancedSettingsInlineTemplate();
+  //   default:
+  //     logError(`Found unknown CPC type '${ cpcType }'! Falling back to CPC type '${ OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD }'!`);
+  //     return AdvancedSettingsStandard.oilAdvancedSettingsInlineTemplate();
+  // }
 }
 
 function attachCpcEventHandlers() {
@@ -177,19 +179,21 @@ function attachCpcEventHandlers() {
     // activateOptoutConfirm();
   }
 
-  const cpcType = getCpcType();
-  switch (cpcType) {
-    case OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD:
-      AdvancedSettingsStandard.attachCpcHandlers();
-      break;
-    case OIL_CONFIG_CPC_TYPES.CPC_TYPE_TABS:
-      AdvancedSettingsTabs.attachCpcHandlers();
-      break;
-    default:
-      logError(`Found unknown CPC type '${ cpcType }'! Falling back to CPC type '${ OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD }'!`);
-      AdvancedSettingsStandard.attachCpcHandlers();
-      break;
-  }
+  AdvancedSettingsStandard.attachCpcHandlers();
+
+  // const cpcType = getCpcType();
+  // switch (cpcType) {
+  //   case OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD:
+  //     AdvancedSettingsStandard.attachCpcHandlers();
+  //     break;
+  //   case OIL_CONFIG_CPC_TYPES.CPC_TYPE_TABS:
+  //     AdvancedSettingsTabs.attachCpcHandlers();
+  //     break;
+  //   default:
+  //     logError(`Found unknown CPC type '${ cpcType }'! Falling back to CPC type '${ OIL_CONFIG_CPC_TYPES.CPC_TYPE_STANDARD }'!`);
+  //     AdvancedSettingsStandard.attachCpcHandlers();
+  //     break;
+  // }
 }
 
 function oilShowCompanyList() {

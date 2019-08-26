@@ -15,10 +15,10 @@ export function oilDefaultTemplate() {
             </p>
         </div>
         <div class="wp-cmp-banner__buttons">
-            <button class="components-button is-link ${JS_CLASS_BUTTON_ADVANCED_SETTINGS}" data-context="${DATA_CONTEXT_ADVANCED_SETTINGS}" data-qa="oil-AdvancedSettingsButton">
+            <button class="components-button is-button is-default ${JS_CLASS_BUTTON_ADVANCED_SETTINGS}" data-context="${DATA_CONTEXT_ADVANCED_SETTINGS}" data-qa="oil-AdvancedSettingsButton">
                 ${getLabel(OIL_LABELS.ATTR_LABEL_BUTTON_ADVANCED_SETTINGS)}
             </button>
-            <button class="components-button is-button is-default" data-context="${DATA_CONTEXT_YES}" data-qa="oil-YesButton">
+            <button class="components-button is-button is-primary ${JS_CLASS_BUTTON_OPTIN}" data-context="${DATA_CONTEXT_YES}" data-qa="oil-YesButton">
               ${getLabel(OIL_LABELS.ATTR_LABEL_BUTTON_YES)}
             </button>
         </div>
