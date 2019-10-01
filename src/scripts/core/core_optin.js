@@ -1,4 +1,4 @@
-import { getSoiCookie, setSoiCookieWithPoiCookieData } from './core_cookies';
+import { getSoiCookie } from './core_cookies';
 import { logPreviewInfo } from './core_log';
 
 /**
@@ -6,7 +6,7 @@ import { logPreviewInfo } from './core_log';
  * @return Promise with updated cookie value
  */
 export function checkOptIn() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     let soiOptIn = getSoiCookie().opt_in;
 
     if (soiOptIn) {

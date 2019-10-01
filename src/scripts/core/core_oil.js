@@ -5,7 +5,6 @@ import { getSoiCookie, isBrowserCookieEnabled, isPreviewCookieSet, removePreview
 import { getLocale, isPreviewMode, resetConfiguration, setGdprApplies } from './core_config';
 import { EVENT_NAME_HAS_OPTED_IN, EVENT_NAME_NO_COOKIES_ALLOWED } from './core_constants';
 import { executeCommandCollection } from './core_command_collection';
-import { manageDomElementActivation } from './core_tag_management';
 import { sendConsentInformationToCustomVendors } from './core_custom_vendors';
 
 /**
@@ -18,7 +17,6 @@ export function initOilLayer() {
   if (isPreviewMode() && !isPreviewCookieSet()) {
     logPreviewInfo('Preview mode ON and OIL layer remains hidden. Run AS_OIL.previewModeOn() and reload to display the layer.');
   }
-  registerDomElementActivationManager();
 
   attachUtilityFunctionsToWindowObject();
 
@@ -71,15 +69,6 @@ export function initOilLayer() {
       }
     });
   }
-}
-
-function registerDomElementActivationManager() {
-  document.addEventListener('DOMContentLoaded', onDomContentLoaded);
-}
-
-function onDomContentLoaded() {
-  document.removeEventListener('DOMContentLoaded', onDomContentLoaded);
-  manageDomElementActivation();
 }
 
 function attachCommandCollectionFunctionToWindowObject() {
