@@ -1,9 +1,7 @@
 import { OilVersion, sendEventToHostSite, setGlobalOilObject } from './core_utils';
-import { handleOptOut } from './core_optout';
 import { logError, logInfo, logPreviewInfo } from './core_log';
 import { checkOptIn } from './core_optin';
 import { getSoiCookie, isBrowserCookieEnabled, isPreviewCookieSet, removePreviewCookie, removeVerboseCookie, setPreviewCookie, setVerboseCookie } from './core_cookies';
-import { doSetTealiumVariables } from './core_tealium_loading_rules';
 import { getLocale, isPreviewMode, resetConfiguration, setGdprApplies } from './core_config';
 import { EVENT_NAME_HAS_OPTED_IN, EVENT_NAME_NO_COOKIES_ALLOWED } from './core_constants';
 import { executeCommandCollection } from './core_command_collection';
@@ -23,8 +21,6 @@ export function initOilLayer() {
   registerDomElementActivationManager();
 
   attachUtilityFunctionsToWindowObject();
-
-  doSetTealiumVariables();
 
   /**
    * We show OIL depending on the following conditions:
@@ -144,28 +140,6 @@ function attachUtilityFunctionsToWindowObject() {
       userview_modal.oilShowPreferenceCenter();
     });
   });
-
-  // setGlobalOilObject('triggerOptIn', () => {
-  //   loadLocale(userview_modal => {
-  //     userview_modal.handleOptIn();
-  //   });
-  // });
-  //
-  // setGlobalOilObject('triggerSoiOptIn', () => {
-  //   loadLocale(userview_modal => {
-  //     userview_modal.handleSoiOptIn();
-  //   });
-  // });
-  //
-  // setGlobalOilObject('triggerPoiOptIn', () => {
-  //   loadLocale(userview_modal => {
-  //     userview_modal.handlePoiOptIn();
-  //   });
-  // });
-  //
-  // setGlobalOilObject('triggerOptOut', () => {
-  //   handleOptOut();
-  // });
 
   setGlobalOilObject('applyGDPR', () => {
     setGdprApplies(true);
