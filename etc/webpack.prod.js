@@ -12,6 +12,7 @@ const appConfig = helpers.getAppConfig();
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const Visualizer = require('webpack-visualizer-plugin');
 /**
  * Webpack Constants
  */
@@ -91,6 +92,7 @@ const config = webpackMerge(commonConfig, {
    */
   plugins: [
 
+    new Visualizer(),
     /*
      * Plugin: OccurenceOrderPlugin
      * Description: Varies the distribution of the ids to get the smallest id length
