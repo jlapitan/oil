@@ -33,7 +33,6 @@ import { applyPrivacySettings, getPrivacySettings, getSoiConsentData } from './u
 // import { activateOptoutConfirm } from './userview_optout_confirm';
 import { getPurposeIds, loadVendorListAndCustomVendorList } from '../core/core_vendor_lists';
 import { manageDomElementActivation } from '../core/core_tag_management';
-import { sendConsentInformationToCustomVendors } from '../core/core_custom_vendors';
 
 // Initialize our Oil wrapper and save it ...
 
@@ -126,7 +125,6 @@ function onOptInComplete() {
   if (commandCollectionExecutor) {
     commandCollectionExecutor();
   }
-  sendConsentInformationToCustomVendors().then(() => logInfo('Consent information sending to custom vendors after user\'s opt-in finished!'));
   manageDomElementActivation();
 }
 
