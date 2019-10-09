@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node http_server.js",
     "build": "npm run build:clean && npm run build:check && npm run build:prod && npm run build:docs",
-    "build:prod": "cross-env-shell SNAPSHOT=${SNAPSHOT} NODE_ENV=production webpack --config etc/webpack.config.js",
+    "build:prod": "cross-env-shell SNAPSHOT=${SNAPSHOT} NODE_ENV=production webpack --profile --config etc/webpack.config.js",
     "build:release": "npm run build:clean && cross-env-shell SNAPSHOT=${SNAPSHOT} NODE_ENV=release webpack --config etc/webpack.config.js && npm run build:docs && node etc/file_stats.js",
     "build:check": "npm run eslint",
     "build:clean": "rimraf dist/*",
@@ -136,6 +136,7 @@
     "to-string-loader": "^1.1.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.0",
+    "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
     "webpack-md5-hash": "^0.0.6",

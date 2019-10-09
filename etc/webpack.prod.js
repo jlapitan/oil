@@ -13,6 +13,8 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const Visualizer = require('webpack-visualizer-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 /**
  * Webpack Constants
  */
@@ -186,7 +188,14 @@ const config = webpackMerge(commonConfig, {
         comments: false
 
       }
+    }),
+
+    new BundleAnalyzerPlugin({
+
+      analyzerMode: 'disabled',
+      generateStatsFile: true
     })
+
   ],
 
   /*
