@@ -16,10 +16,7 @@ import { OIL_CONFIG_DEFAULT_VERSION, OIL_SPEC } from './core_constants';
 import { getCustomVendorListVersion, getLimitedVendorIds, getPurposes, getVendorList, loadVendorListAndCustomVendorList } from './core_vendor_lists';
 import { OilVersion } from './core_utils';
 
-const { ConsentString } = require('consent-string');
-
-const COOKIE_PREVIEW_NAME = 'oil_preview';
-const COOKIE_VERBOSE_NAME = 'oil_verbose';
+import { ConsentString } from 'consent-string';
 
 const OIL_DOMAIN_COOKIE_NAME = 'oil_data';
 const OIL_SESSION_COOKIE_NAME = 'oil_data_session';
@@ -134,30 +131,6 @@ export function setSoiCookie(privacySettings) {
       resolve(cookie);
     }).catch(error => reject(error));
   });
-}
-
-export function setPreviewCookie() {
-  setSessionCookie(COOKIE_PREVIEW_NAME, 'true');
-}
-
-export function setVerboseCookie() {
-  setSessionCookie(COOKIE_VERBOSE_NAME, 'true');
-}
-
-export function removePreviewCookie() {
-  Cookie.remove(COOKIE_PREVIEW_NAME);
-}
-
-export function removeVerboseCookie() {
-  Cookie.remove(COOKIE_VERBOSE_NAME);
-}
-
-export function isPreviewCookieSet() {
-  return Cookie.get(COOKIE_PREVIEW_NAME) === 'true';
-}
-
-export function isVerboseCookieSet() {
-  return Cookie.get(COOKIE_VERBOSE_NAME) === 'true';
 }
 
 export function removeSubscriberCookies() {
