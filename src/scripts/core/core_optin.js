@@ -1,5 +1,5 @@
 import { getSoiCookie } from './core_cookies';
-import { logPreviewInfo } from './core_log';
+import { logInfo } from './core_log';
 
 /**
  * Check Opt In
@@ -10,9 +10,9 @@ export function checkOptIn() {
     let soiOptIn = getSoiCookie().opt_in;
 
     if (soiOptIn) {
-      logPreviewInfo('User has given SOI permit, OIL not shown.');
+      logInfo('User has given SOI permit, OIL not shown.');
     } else {
-      logPreviewInfo('User has not opted in at all, OIL should be shown.');
+      logInfo('User has not opted in at all, OIL should be shown.');
     }
 
     resolve(soiOptIn);

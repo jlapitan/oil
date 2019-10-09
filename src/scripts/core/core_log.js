@@ -1,8 +1,10 @@
 import {isDev} from './core_utils.js';
-import {isVerboseCookieSet, isPreviewCookieSet} from './core_cookies.js'
-import {isPreviewMode} from './core_config.js'
 
 const prefix = 'OIL: ';
+
+function isVerboseCookieSet() {
+  return false;
+}
 
 /**
  * LogError on none-production environments.
@@ -31,16 +33,6 @@ export function logInfo() {
 export function logWarn() {
   if ((isDev() || isVerboseCookieSet()) && window.console) {
     logInternally(window.console.warn, arguments);
-  }
-}
-
-/**
- * LogPreviewInfo is for preview production environments.
- * if console.info is not defined, fall back to console.log, ignore completely on weird cases
- */
-export function logPreviewInfo() {
-  if (isDev() || isPreviewMode() || isPreviewCookieSet() || isVerboseCookieSet()) {
-    logInternally(window.console.info, arguments);
   }
 }
 
