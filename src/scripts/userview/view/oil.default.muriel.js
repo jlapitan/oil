@@ -1,7 +1,6 @@
 import { JS_CLASS_BUTTON_OPTIN, JS_CLASS_BUTTON_ADVANCED_SETTINGS, DATA_CONTEXT_ADVANCED_SETTINGS, DATA_CONTEXT_YES } from '../../core/core_constants.js';
-import { getLabel, isAdvancedSettings } from '../userview_config.js';
+import { getLabel } from '../userview_config.js';
 import { OIL_LABELS } from '../userview_constants.js';
-import { AdvancedSettingsButton, YesButton } from './components/oil.buttons.js';
 
 export function oilDefaultTemplate() {
   return `
@@ -24,6 +23,4 @@ export function oilDefaultTemplate() {
         </div>
     </div>
 `
-  //${AdvancedSettingsButton(isAdvancedSettings())}
-  //${YesButton(`as-oil__btn-optin ${JS_CLASS_BUTTON_OPTIN}`)}
 }

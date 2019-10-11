@@ -1,15 +1,11 @@
 import '../../../styles/cpc_standard.muriel.scss';
 import { OIL_LABELS } from '../userview_constants';
 import { forEach } from '../userview_modal';
-import { getLabel, getLabelWithDefault, getTheme } from '../userview_config';
-import { getCustomPurposes, getCustomVendorListUrl } from '../../core/core_config';
-import {JS_CLASS_BUTTON_OPTIN, OIL_GLOBAL_OBJECT_NAME, DATA_CONTEXT_YES, PURPOSE_PERSONALIZATION} from '../../core/core_constants';
-import {setGlobalOilObject, addClass, removeClass, hasClass} from '../../core/core_utils';
-import {getCustomVendorList, getFeatures, getPurposes, getVendorList, getVendorsToDisplay} from '../../core/core_vendor_lists';
-import { CloseButton, YesButton } from './components/oil.buttons';
-
-
-const CLASS_NAME_FOR_ACTIVE_MENU_SECTION = 'as-oil-cpc__category-link--active';
+import { getLabel, getLabelWithDefault } from '../userview_config';
+import {JS_CLASS_BUTTON_OPTIN, DATA_CONTEXT_YES, PURPOSE_PERSONALIZATION} from '../../core/core_constants';
+import { addClass, removeClass, hasClass} from '../../core/core_utils';
+import { getFeatures, getPurposes, getVendorList, getVendorsToDisplay} from '../../core/core_vendor_lists';
+import { CloseButton } from './components/oil.buttons';
 
 export function oilAdvancedSettingsTemplate() {
   return `
@@ -123,10 +119,6 @@ const FeatureContainerSnippet = ({header, text}) => {
   </div>`
 };
 
-const IsCustomVendorsEnables = () => {
-  return !!getCustomVendorListUrl();
-};
-
 const buildIabVendorList = () => {
   return `
     <div class="wp-cmp-settings__row-title" id="as-oil-cpc-third-parties">
@@ -135,20 +127,6 @@ const buildIabVendorList = () => {
     <div class="wp-cmp__third-party-list" id="as-js-third-parties-list">
       ${buildIabVendorEntries()}
     </div>`
-};
-
-const buildCustomVendorList = () => {
-  if (IsCustomVendorsEnables()) {
-    return `
-<div class="as-oil-cpc__row-title" id="as-oil-cpc-custom-third-parties">
-  ${getLabel(OIL_LABELS.ATTR_LABEL_CUSTOM_THIRD_PARTY_HEADING)}
-</div>
-<div id="as-oil-custom-third-parties-list">
-  ${buildCustomVendorEntries()}
-</div>`
-  } else {
-    return '';
-  }
 };
 
 const buildIabVendorEntries = () => {
@@ -161,19 +139,6 @@ const buildIabVendorEntries = () => {
     return `<div class="as-oil-poi-group-list">${listWrapped.join('')}</div>`;
   } else {
     return 'Missing vendor list! Maybe vendor list retrieval has failed! Please contact web administrator!';
-  }
-};
-
-const buildCustomVendorEntries = () => {
-  let customVendorList = getCustomVendorList();
-
-  if (customVendorList && !customVendorList.isDefault) {
-    let listWrapped = customVendorList.vendors.map((element) => {
-      return buildVendorListEntry(element);
-    });
-    return `<div class="as-oil-poi-group-list">${listWrapped.join('')}</div>`;
-  } else {
-    return 'Missing custom vendor list! Maybe vendor list retrieval has failed! Please contact web administrator!';
   }
 };
 
@@ -296,14 +261,3 @@ export function setToggleState(element, state) {
   }
 
 }
-
-function switchLeftMenuClass(element) {
-  let allElementsInMenu = element.parentNode.children;
-
-  forEach(allElementsInMenu, (el) => {
-    el.className = el.className.replace(new RegExp(`\\s?${CLASS_NAME_FOR_ACTIVE_MENU_SECTION}\\s?`, 'g'), '');
-  });
-  element.className += ` ${CLASS_NAME_FOR_ACTIVE_MENU_SECTION}`;
-}
-
-setGlobalOilObject('_switchLeftMenuClass', switchLeftMenuClass);
