@@ -107,3 +107,6 @@ export const OIL_GLOBAL_OBJECT_NAME = 'AS_OIL';
 export const MANAGED_TAG_IDENTIFIER = 'as-oil';
 export const MANAGED_TAG_IDENTIFIER_ATTRIBUTE = 'data-managed';
 export const MANAGED_TAG_PURPOSES_ATTRIBUTE = 'data-purposes';
+
+// Purposes
+export const PURPOSE_PERSONALIZATION = 2;

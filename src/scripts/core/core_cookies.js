@@ -12,7 +12,7 @@ import {
   getLocaleVariantName
 } from './core_config';
 import { getLocaleVariantVersion } from './core_utils';
-import { OIL_CONFIG_DEFAULT_VERSION, OIL_SPEC } from './core_constants';
+import {OIL_CONFIG_DEFAULT_VERSION, OIL_SPEC, PURPOSE_PERSONALIZATION} from './core_constants';
 import { getCustomVendorListVersion, getLimitedVendorIds, getPurposes, getVendorList, loadVendorListAndCustomVendorList } from './core_vendor_lists';
 import { OilVersion } from './core_utils';
 
@@ -157,11 +157,19 @@ export function isBrowserCookieEnabled() {
 }
 
 export function getStandardPurposesWithConsent(privacySettings) {
+
+  let purposes = [];
+
   if (typeof privacySettings === 'object') {
-    return getPurposes().map(({ id }) => id).filter(purposeId => privacySettings[purposeId]);
+    purposes = getPurposes().map(({ id }) => id).filter(purposeId => privacySettings[purposeId]);
   } else {
-    return privacySettings === 1 ? getPurposes().map(({ id }) => id) : [];
+    purposes = privacySettings === 1 ? getPurposes().map(({ id }) => id) : [];
   }
+
+  // Filter out personalization purpose because we don't use it
+  purposes = purposes.filter(id => id !== PURPOSE_PERSONALIZATION);
+
+  return purposes;
 }
 
 export function getCustomPurposesWithConsent(privacySettings, allCustomPurposes) {

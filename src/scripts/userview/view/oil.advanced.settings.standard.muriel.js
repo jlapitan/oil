@@ -3,7 +3,7 @@ import { OIL_LABELS } from '../userview_constants';
 import { forEach } from '../userview_modal';
 import { getLabel, getLabelWithDefault, getTheme } from '../userview_config';
 import { getCustomPurposes, getCustomVendorListUrl } from '../../core/core_config';
-import { JS_CLASS_BUTTON_OPTIN, OIL_GLOBAL_OBJECT_NAME, DATA_CONTEXT_YES } from '../../core/core_constants';
+import {JS_CLASS_BUTTON_OPTIN, OIL_GLOBAL_OBJECT_NAME, DATA_CONTEXT_YES, PURPOSE_PERSONALIZATION} from '../../core/core_constants';
 import {setGlobalOilObject, addClass, removeClass, hasClass} from '../../core/core_utils';
 import {getCustomVendorList, getFeatures, getPurposes, getVendorList, getVendorsToDisplay} from '../../core/core_vendor_lists';
 import { CloseButton, YesButton } from './components/oil.buttons';
@@ -103,8 +103,8 @@ const ContentSnippet = () => {
 const PurposeContainerSnippet = ({id, header, text, value}) => {
   return `
   <div class="wp-cmp__purpose">
-        <span class="wp-cmp__purpose-toggle components-form-toggle">
-            <input data-id="${id}" id="as-js-purpose-slider-${id}" class="as-js-purpose-slider components-form-toggle__input" type="checkbox" name="oil-cpc-purpose-${id}" value="${value}" />
+        <span class="wp-cmp__purpose-toggle components-form-toggle ${id === PURPOSE_PERSONALIZATION ? 'disabled' : ''}">
+            <input data-id="${id}" id="as-js-purpose-slider-${id}" class="as-js-purpose-slider${id === PURPOSE_PERSONALIZATION ? '-disabled' : ''} components-form-toggle__input" type="checkbox" name="oil-cpc-purpose-${id}" value="${value}" />
             <span class="components-form-toggle__track"></span>
             <span class="components-form-toggle__thumb"></span>
             <svg class="components-form-toggle__on" width="2" height="6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 6" role="img" aria-hidden="true" focusable="false"><path d="M0 0h2v6H0z"></path></svg>

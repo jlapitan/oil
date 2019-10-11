@@ -16,7 +16,7 @@ import {
   JS_CLASS_BUTTON_OILBACK,
   JS_CLASS_BUTTON_OPTIN,
   OIL_CONFIG_CPC_TYPES,
-  PRIVACY_MINIMUM_TRACKING
+  PRIVACY_MINIMUM_TRACKING, PURPOSE_PERSONALIZATION
 } from '../core/core_constants';
 import { oilOptIn, oilPowerOptIn } from './userview_optin';
 import { deActivatePowerOptIn } from '../core/core_poi';
@@ -98,7 +98,8 @@ export function oilShowPreferenceCenter() {
           if (consentData) {
             currentPrivacySettings = consentData.getPurposesAllowed();
           } else {
-            currentPrivacySettings = getAdvancedSettingsPurposesDefault() ? getPurposeIds() : [];
+            // Filter out personalization purpose
+            currentPrivacySettings = getAdvancedSettingsPurposesDefault() ? getPurposeIds().filter(id => id !== PURPOSE_PERSONALIZATION) : [];
           }
           applyPrivacySettings(currentPrivacySettings);
         });

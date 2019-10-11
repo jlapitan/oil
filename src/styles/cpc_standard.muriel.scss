@@ -213,6 +213,10 @@ body.admin-bar .cleanslate .components-modal__frame {
   .components-form-toggle {
     position: relative !important;
     display: inline-block !important;
+
+    &.disabled {
+      opacity: 0.5 !important;
+    }
   }
 
   .components-form-toggle .components-form-toggle__on,
@@ -335,6 +339,10 @@ body.admin-bar .cleanslate .components-modal__frame {
     padding: 0 !important;
     z-index: 1 !important;
     border: none !important;
+  }
+
+  .components-form-toggle.disabled input.components-form-toggle__input[type="checkbox"] {
+    cursor: default !important;
   }
 
   .components-form-toggle input.components-form-toggle__input[type="checkbox"]:checked {
