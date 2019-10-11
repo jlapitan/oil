@@ -4,16 +4,16 @@ import { OIL_LABELS } from '../userview_constants.js';
 
 export function oilDefaultTemplate() {
   return `
-    <div class="wp-cmp-banner" data-qa="oil-full">
-        <div class="wp-cmp-banner__content">
-            <div class="wp-cmp-banner__heading">
+    <div class="cmp-banner" data-qa="oil-full">
+        <div class="cmp-banner__content">
+            <div class="cmp-banner__heading">
                 ${getLabel(OIL_LABELS.ATTR_LABEL_INTRO_HEADING)}
             </div>
-            <p class="wp-cmp-banner__intro-txt">
+            <p class="cmp-banner__intro-txt">
                 ${getLabel(OIL_LABELS.ATTR_LABEL_INTRO)}
             </p>
         </div>
-        <div class="wp-cmp-banner__buttons">
+        <div class="cmp-banner__buttons">
             <button class="components-button is-button is-default ${JS_CLASS_BUTTON_ADVANCED_SETTINGS}" data-context="${DATA_CONTEXT_ADVANCED_SETTINGS}" data-qa="oil-AdvancedSettingsButton">
                 ${getLabel(OIL_LABELS.ATTR_LABEL_BUTTON_ADVANCED_SETTINGS)}
             </button>
