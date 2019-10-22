@@ -116,7 +116,8 @@ export function buildSoiCookie(privacySettings) {
         customVendorListVersion: getCustomVendorListVersion(),
         customPurposes: getCustomPurposesWithConsent(privacySettings),
         consentString: !getInfoBannerOnly() ? consentData.getConsentString() : '',
-        configVersion: cookieConfig.defaultCookieContent.configVersion
+        configVersion: cookieConfig.defaultCookieContent.configVersion,
+        dateSet: Date.now()
       };
 
       resolve(outputCookie);

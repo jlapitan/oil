@@ -76,22 +76,26 @@ function isCookie(name) {
 
 function quickCheckOptIn() {
   return new Promise((resolve) => {
-    let soiOptIn = getOilCookieOptIn();
+    let soiCookie = getOilCookie();
+    let optin = false;
+    let monthInMilliseconds = 2592000000;
 
-    if (soiOptIn) {
+    if (soiCookie.opt_in && (Date.now() - soiCookie.dateSet) < monthInMilliseconds  ) {
       logInfo('User has given SOI permit, OIL not shown.');
+      optin = true;
     } else {
       logInfo('User has not opted in at all, OIL should be shown.');
+      optin = false;
     }
 
-    resolve(soiOptIn);
+    resolve(optin);
   });
 }
 
-function getOilCookieOptIn() {
+function getOilCookie() {
   if (isCookie('oil_data')) {
     let cookieJson = Cookie.getJSON('oil_data');
-    return cookieJson.opt_in;
+    return cookieJson;
   }
 
   return false;
