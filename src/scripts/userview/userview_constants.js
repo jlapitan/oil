@@ -9,6 +9,7 @@ export const OIL_LABELS = {
 
   // VENDORLISTS labels
   ATTR_LABEL_THIRD_PARTY: 'label_third_party',
+  ATTR_LABEL_THIRD_PARTY_INTRO: 'label_third_party_intro',
   ATTR_LABEL_THIRD_PARTY_LIST_HEADING: 'label_thirdparty_list_heading',
   ATTR_LABEL_THIRD_PARTY_LIST_TEXT: 'label_thirdparty_list_text',
   ATTR_LABEL_CUSTOM_THIRD_PARTY_HEADING: 'label_custom_thirdparty_heading',

@@ -124,6 +124,9 @@ const buildIabVendorList = () => {
     <div class="cmp-settings__row-title" id="as-oil-cpc-third-parties">
       ${getLabel(OIL_LABELS.ATTR_LABEL_THIRD_PARTY)}
     </div>
+    <p class="cmp-settings__intro-txt">
+      ${getLabel(OIL_LABELS.ATTR_LABEL_THIRD_PARTY_INTRO)}
+    </p>
     <div class="cmp__third-party-list" id="as-js-third-parties-list">
       ${buildIabVendorEntries()}
     </div>`
