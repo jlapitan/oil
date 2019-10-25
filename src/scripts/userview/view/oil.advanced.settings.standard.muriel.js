@@ -85,13 +85,17 @@ const ContentSnippet = () => {
       
       ${buildPurposeEntries(getPurposes())}
       
+      ${buildIabVendorList()}
+      
       <div class="cmp-settings__row-title" id="as-oil-cpc-features">
         ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_FEATURE_DESC)}
       </div>
       
-      ${buildFeatureEntries(getFeatures())}
+      <p class="cmp-settings__intro-txt">
+        ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_FEATURE_INTRO)}
+      </p>
       
-      ${buildIabVendorList()}
+      ${buildFeatureEntries(getFeatures())}
       
   </div>`;
 };
