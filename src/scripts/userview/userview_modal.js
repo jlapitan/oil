@@ -22,7 +22,6 @@ import { getTheme, getTimeOutValue, isPersistMinimumTracking } from './userview_
 import { gdprApplies, getAdvancedSettingsPurposesDefault } from '../core/core_config';
 import { applyPrivacySettings, getPrivacySettings, getSoiConsentData } from './userview_privacy';
 import { getPurposeIds, loadVendorListAndCustomVendorList } from '../core/core_vendor_lists';
-import { manageDomElementActivation } from '../core/core_tag_management';
 
 // Initialize our Oil wrapper and save it ...
 
@@ -101,7 +100,6 @@ function onOptInComplete() {
   if (commandCollectionExecutor) {
     commandCollectionExecutor();
   }
-  manageDomElementActivation();
 }
 
 function shouldRenderOilLayer(props) {

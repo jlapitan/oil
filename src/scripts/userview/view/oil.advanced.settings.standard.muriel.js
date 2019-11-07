@@ -2,10 +2,9 @@ import '../../../styles/cpc_standard.muriel.scss';
 import { OIL_LABELS } from '../userview_constants';
 import { forEach } from '../userview_modal';
 import { getLabel, getLabelWithDefault } from '../userview_config';
-import {JS_CLASS_BUTTON_OPTIN, DATA_CONTEXT_YES, PURPOSE_PERSONALIZATION} from '../../core/core_constants';
+import {JS_CLASS_BUTTON_OPTIN, JS_CLASS_BUTTON_OILBACK, DATA_CONTEXT_YES, PURPOSE_PERSONALIZATION} from '../../core/core_constants';
 import { addClass, removeClass, hasClass} from '../../core/core_utils';
 import { getFeatures, getPurposes, getVendorList, getVendorsToDisplay} from '../../core/core_vendor_lists';
-import { CloseButton } from './components/oil.buttons';
 
 export function oilAdvancedSettingsTemplate() {
   return `
@@ -21,7 +20,11 @@ export function oilAdvancedSettingsInlineTemplate() {
         <div class="components-modal__header-heading-container">
           <h1 class="components-modal__header-heading">${getLabel(OIL_LABELS.ATTR_LABEL_CPC_HEADING)}</h1>
         </div>
-        ${CloseButton()}
+        <button type="button" aria-label="Close dialog" class="components-button components-icon-button ${JS_CLASS_BUTTON_OILBACK}">
+            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-no-alt" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path d="M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"></path>
+            </svg>
+        </button>  
       </div>
       <p class="cmp-settings__intro-txt">
         ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_TEXT)}
