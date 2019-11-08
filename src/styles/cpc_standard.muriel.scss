@@ -1,3 +1,5 @@
+@import "./_settings";
+
 body.admin-bar .cleanslate .components-modal__frame {
   @media (max-width: 599px) {
     top: 46px !important;
@@ -66,7 +68,7 @@ body.admin-bar .cleanslate .components-modal__frame {
     bottom: 0 !important;
     left: 0 !important;
     background-color: rgba(0, 0, 0, 0.7) !important;
-    z-index: 100000 !important;
+    z-index: $z-index-max !important;
     animation: edit-post__fade-in-animation 0.2s ease-out 0s !important;
     animation-fill-mode: forwards !important;
   }
