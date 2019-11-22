@@ -1,7 +1,7 @@
 import { OilVersion, sendEventToHostSite, setGlobalOilObject } from './core_utils';
 import { logError, logInfo} from './core_log';
 import { getLocale} from './core_config';
-import { EVENT_NAME_HAS_OPTED_IN, EVENT_NAME_NO_COOKIES_ALLOWED } from './core_constants';
+import { EVENT_NAME_HAS_OPTED_IN, EVENT_NAME_NO_COOKIES_ALLOWED, OIL_DOMAIN_COOKIE_NAME } from './core_constants';
 import Cookie from 'js-cookie';
 
 /**
@@ -93,8 +93,8 @@ function quickCheckOptIn() {
 }
 
 function getOilCookie() {
-  if (isCookie('oil_data')) {
-    let cookieJson = Cookie.getJSON('oil_data');
+  if (isCookie(OIL_DOMAIN_COOKIE_NAME)) {
+    let cookieJson = Cookie.getJSON(OIL_DOMAIN_COOKIE_NAME);
     return cookieJson;
   }
 

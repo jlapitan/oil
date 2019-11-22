@@ -12,14 +12,11 @@ import {
   getLocaleVariantName
 } from './core_config';
 import { getLocaleVariantVersion } from './core_utils';
-import {OIL_CONFIG_DEFAULT_VERSION, OIL_SPEC, PURPOSE_PERSONALIZATION} from './core_constants';
+import { OIL_CONFIG_DEFAULT_VERSION, OIL_SPEC, PURPOSE_PERSONALIZATION, OIL_DOMAIN_COOKIE_NAME, OIL_SESSION_COOKIE_NAME } from './core_constants';
 import { getCustomVendorListVersion, getLimitedVendorIds, getPurposes, getVendorList, loadVendorListAndCustomVendorList } from './core_vendor_lists';
 import { OilVersion } from './core_utils';
 
 import { ConsentString } from 'consent-string';
-
-const OIL_DOMAIN_COOKIE_NAME = 'oil_data';
-const OIL_SESSION_COOKIE_NAME = 'oil_data_session';
 
 export function setSessionCookie(name, value) {
   Cookie.set(name, value);

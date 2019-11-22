@@ -45,6 +45,10 @@ export const OIL_CONFIG_CPC_TYPES = {
 
 export const OIL_CONFIG_DEFAULT_VERSION = 0;
 
+// Cookies
+export const OIL_DOMAIN_COOKIE_NAME = 'cmp_data';
+export const OIL_SESSION_COOKIE_NAME = 'cmp_data_session';
+
 // Main Click events
 export const EVENT_NAME_OPT_IN = 'oil_optin_done';
 export const EVENT_NAME_SOI_OPT_IN = 'oil_soi_optin_done';
