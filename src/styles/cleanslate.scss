@@ -173,6 +173,9 @@
 .cleanslate h1, .cleanslate h2, .cleanslate h3, .cleanslate h4, .cleanslate h5, .cleanslate h6 {
     font-weight: bold !important;
 }
+.cleanslate h1:before, .cleanslate h2:before {
+    display: none !important;
+}
 .cleanslate h1 {
     font-size: 2em !important;
     padding: .67em 0 !important;
