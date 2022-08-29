@@ -12,6 +12,7 @@
     "label_cpc_activate_all": "Activate all",
     "label_cpc_deactivate_all": "Deactivate all",
     "label_third_party": "IAB 3rd Parties",
+    "label_third_party_intro": "Third parties may use your personal data for legitimate interest purposes without consent. To opt out, visit the privacy policy for that partner to manage how your data will be used.",
     "label_custom_thirdparty_heading": "Publisher 3rd Parties",
     "label_cpc_purpose_desc": "Purpose",
     "label_cpc_purpose_optout_confirm_heading": "Are you really sure?",

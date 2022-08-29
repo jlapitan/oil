@@ -12,14 +12,11 @@ import {
   getLocaleVariantName
 } from './core_config';
 import { getLocaleVariantVersion } from './core_utils';
-import { OIL_CONFIG_DEFAULT_VERSION, OIL_SPEC } from './core_constants';
+import { OIL_CONFIG_DEFAULT_VERSION, OIL_SPEC, PURPOSE_PERSONALIZATION, OIL_DOMAIN_COOKIE_NAME, OIL_SESSION_COOKIE_NAME } from './core_constants';
 import { getCustomVendorListVersion, getLimitedVendorIds, getPurposes, getVendorList, loadVendorListAndCustomVendorList } from './core_vendor_lists';
 import { OilVersion } from './core_utils';
 
 import { ConsentString } from 'consent-string';
-
-const OIL_DOMAIN_COOKIE_NAME = 'oil_data';
-const OIL_SESSION_COOKIE_NAME = 'oil_data_session';
 
 export function setSessionCookie(name, value) {
   Cookie.set(name, value);
@@ -116,7 +113,8 @@ export function buildSoiCookie(privacySettings) {
         customVendorListVersion: getCustomVendorListVersion(),
         customPurposes: getCustomPurposesWithConsent(privacySettings),
         consentString: !getInfoBannerOnly() ? consentData.getConsentString() : '',
-        configVersion: cookieConfig.defaultCookieContent.configVersion
+        configVersion: cookieConfig.defaultCookieContent.configVersion,
+        dateSet: Date.now()
       };
 
       resolve(outputCookie);
@@ -157,11 +155,19 @@ export function isBrowserCookieEnabled() {
 }
 
 export function getStandardPurposesWithConsent(privacySettings) {
+
+  let purposes = [];
+
   if (typeof privacySettings === 'object') {
-    return getPurposes().map(({ id }) => id).filter(purposeId => privacySettings[purposeId]);
+    purposes = getPurposes().map(({ id }) => id).filter(purposeId => privacySettings[purposeId]);
   } else {
-    return privacySettings === 1 ? getPurposes().map(({ id }) => id) : [];
+    purposes = privacySettings === 1 ? getPurposes().map(({ id }) => id) : [];
   }
+
+  // Filter out personalization purpose because we don't use it
+  purposes = purposes.filter(id => id !== PURPOSE_PERSONALIZATION);
+
+  return purposes;
 }
 
 export function getCustomPurposesWithConsent(privacySettings, allCustomPurposes) {

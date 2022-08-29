@@ -26,7 +26,7 @@
       function handlePing(pingCallback) {
         if (pingCallback) {
           let gdprAppliesGlobally = true;
-          const configurationElement = document.querySelector('script[type="application/configuration"]#oil-configuration');
+          const configurationElement = document.querySelector('script[type="application/configuration"]#cmp-configuration');
           if (configurationElement !== null && configurationElement.text) {
             try {
               let parsedConfig = JSON.parse(configurationElement.text);

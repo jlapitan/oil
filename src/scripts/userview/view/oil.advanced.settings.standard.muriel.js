@@ -1,15 +1,10 @@
 import '../../../styles/cpc_standard.muriel.scss';
 import { OIL_LABELS } from '../userview_constants';
 import { forEach } from '../userview_modal';
-import { getLabel, getLabelWithDefault, getTheme } from '../userview_config';
-import { getCustomPurposes, getCustomVendorListUrl } from '../../core/core_config';
-import { JS_CLASS_BUTTON_OPTIN, OIL_GLOBAL_OBJECT_NAME, DATA_CONTEXT_YES } from '../../core/core_constants';
-import {setGlobalOilObject, addClass, removeClass, hasClass} from '../../core/core_utils';
-import {getCustomVendorList, getFeatures, getPurposes, getVendorList, getVendorsToDisplay} from '../../core/core_vendor_lists';
-import { CloseButton, YesButton } from './components/oil.buttons';
-
-
-const CLASS_NAME_FOR_ACTIVE_MENU_SECTION = 'as-oil-cpc__category-link--active';
+import { getLabel, getLabelWithDefault } from '../userview_config';
+import {JS_CLASS_BUTTON_OPTIN, JS_CLASS_BUTTON_OILBACK, DATA_CONTEXT_YES, PURPOSE_PERSONALIZATION} from '../../core/core_constants';
+import { addClass, removeClass, hasClass} from '../../core/core_utils';
+import { getFeatures, getPurposes, getVendorList, getVendorsToDisplay} from '../../core/core_vendor_lists';
 
 export function oilAdvancedSettingsTemplate() {
   return `
@@ -20,14 +15,18 @@ export function oilAdvancedSettingsTemplate() {
 
 export function oilAdvancedSettingsInlineTemplate() {
   return `<div class="components-modal__frame">
-    <div class="wp-cmp-settings components-modal__content">
+    <div class="cmp-settings components-modal__content">
       <div class="components-modal__header">
         <div class="components-modal__header-heading-container">
           <h1 class="components-modal__header-heading">${getLabel(OIL_LABELS.ATTR_LABEL_CPC_HEADING)}</h1>
         </div>
-        ${CloseButton()}
+        <button type="button" aria-label="Close dialog" class="components-button components-icon-button ${JS_CLASS_BUTTON_OILBACK}">
+            <svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-no-alt" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                <path d="M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"></path>
+            </svg>
+        </button>  
       </div>
-      <p class="wp-cmp-settings__intro-txt">
+      <p class="cmp-settings__intro-txt">
         ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_TEXT)}
       </p>
       ${ContentSnippet()}
@@ -77,9 +76,9 @@ const ContentSnippet = () => {
   return `
   <div data-qa="cpc-snippet" class="as-js-purpose">
   
-      <div class="wp-cmp-settings__all-btns">
+      <div class="cmp-settings__all-btns">
           
-        <div class="wp-cmp-settings__row-title" id="as-oil-cpc-purposes">
+        <div class="cmp-settings__row-title" id="as-oil-cpc-purposes">
           ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_PURPOSE_DESC)}
         </div>
         
@@ -89,66 +88,55 @@ const ContentSnippet = () => {
       
       ${buildPurposeEntries(getPurposes())}
       
-      <div class="wp-cmp-settings__row-title" id="as-oil-cpc-features">
+      ${buildIabVendorList()}
+      
+      <div class="cmp-settings__row-title" id="as-oil-cpc-features">
         ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_FEATURE_DESC)}
       </div>
       
-      ${buildFeatureEntries(getFeatures())}
+      <p class="cmp-settings__intro-txt">
+        ${getLabel(OIL_LABELS.ATTR_LABEL_CPC_FEATURE_INTRO)}
+      </p>
       
-      ${buildIabVendorList()}
+      ${buildFeatureEntries(getFeatures())}
       
   </div>`;
 };
 
 const PurposeContainerSnippet = ({id, header, text, value}) => {
   return `
-  <div class="wp-cmp__purpose">
-        <span class="wp-cmp__purpose-toggle components-form-toggle">
-            <input data-id="${id}" id="as-js-purpose-slider-${id}" class="as-js-purpose-slider components-form-toggle__input" type="checkbox" name="oil-cpc-purpose-${id}" value="${value}" />
+  <div class="cmp__purpose">
+        <span class="cmp__purpose-toggle components-form-toggle ${id === PURPOSE_PERSONALIZATION ? 'disabled' : ''}">
+            <input data-id="${id}" id="as-js-purpose-slider-${id}" class="as-js-purpose-slider${id === PURPOSE_PERSONALIZATION ? '-disabled' : ''} components-form-toggle__input" type="checkbox" name="oil-cpc-purpose-${id}" value="${value}" />
             <span class="components-form-toggle__track"></span>
             <span class="components-form-toggle__thumb"></span>
             <svg class="components-form-toggle__on" width="2" height="6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 6" role="img" aria-hidden="true" focusable="false"><path d="M0 0h2v6H0z"></path></svg>
             <svg class="components-form-toggle__off" width="6" height="6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 6" role="img" aria-hidden="true" focusable="false"><path d="M3 1.5c.8 0 1.5.7 1.5 1.5S3.8 4.5 3 4.5 1.5 3.8 1.5 3 2.2 1.5 3 1.5M3 0C1.3 0 0 1.3 0 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3z"></path></svg>
         </span>
-        <div class="wp-cmp__purpose-header">${header}</div>
-        <div class="wp-cmp__purpose-text">${text}</div>
+        <div class="cmp__purpose-header">${header}</div>
+        <div class="cmp__purpose-text">${text}</div>
   </div>`
 };
 
 const FeatureContainerSnippet = ({header, text}) => {
   return `
-  <div class="wp-cmp__purpose">
-        <div class="wp-cmp__purpose-header">${header}</div>
-        <div class="wp-cmp__purpose-text">${text}</div>
+  <div class="cmp__purpose">
+        <div class="cmp__purpose-header">${header}</div>
+        <div class="cmp__purpose-text">${text}</div>
   </div>`
-};
-
-const IsCustomVendorsEnables = () => {
-  return !!getCustomVendorListUrl();
 };
 
 const buildIabVendorList = () => {
   return `
-    <div class="wp-cmp-settings__row-title" id="as-oil-cpc-third-parties">
+    <div class="cmp-settings__row-title" id="as-oil-cpc-third-parties">
       ${getLabel(OIL_LABELS.ATTR_LABEL_THIRD_PARTY)}
     </div>
-    <div class="wp-cmp__third-party-list" id="as-js-third-parties-list">
+    <p class="cmp-settings__intro-txt">
+      ${getLabel(OIL_LABELS.ATTR_LABEL_THIRD_PARTY_INTRO)}
+    </p>
+    <div class="cmp__third-party-list" id="as-js-third-parties-list">
       ${buildIabVendorEntries()}
     </div>`
-};
-
-const buildCustomVendorList = () => {
-  if (IsCustomVendorsEnables()) {
-    return `
-<div class="as-oil-cpc__row-title" id="as-oil-cpc-custom-third-parties">
-  ${getLabel(OIL_LABELS.ATTR_LABEL_CUSTOM_THIRD_PARTY_HEADING)}
-</div>
-<div id="as-oil-custom-third-parties-list">
-  ${buildCustomVendorEntries()}
-</div>`
-  } else {
-    return '';
-  }
 };
 
 const buildIabVendorEntries = () => {
@@ -161,19 +149,6 @@ const buildIabVendorEntries = () => {
     return `<div class="as-oil-poi-group-list">${listWrapped.join('')}</div>`;
   } else {
     return 'Missing vendor list! Maybe vendor list retrieval has failed! Please contact web administrator!';
-  }
-};
-
-const buildCustomVendorEntries = () => {
-  let customVendorList = getCustomVendorList();
-
-  if (customVendorList && !customVendorList.isDefault) {
-    let listWrapped = customVendorList.vendors.map((element) => {
-      return buildVendorListEntry(element);
-    });
-    return `<div class="as-oil-poi-group-list">${listWrapped.join('')}</div>`;
-  } else {
-    return 'Missing custom vendor list! Maybe vendor list retrieval has failed! Please contact web administrator!';
   }
 };
 
@@ -296,14 +271,3 @@ export function setToggleState(element, state) {
   }
 
 }
-
-function switchLeftMenuClass(element) {
-  let allElementsInMenu = element.parentNode.children;
-
-  forEach(allElementsInMenu, (el) => {
-    el.className = el.className.replace(new RegExp(`\\s?${CLASS_NAME_FOR_ACTIVE_MENU_SECTION}\\s?`, 'g'), '');
-  });
-  element.className += ` ${CLASS_NAME_FOR_ACTIVE_MENU_SECTION}`;
-}
-
-setGlobalOilObject('_switchLeftMenuClass', switchLeftMenuClass);

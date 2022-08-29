@@ -9,6 +9,7 @@ export const OIL_LABELS = {
 
   // VENDORLISTS labels
   ATTR_LABEL_THIRD_PARTY: 'label_third_party',
+  ATTR_LABEL_THIRD_PARTY_INTRO: 'label_third_party_intro',
   ATTR_LABEL_THIRD_PARTY_LIST_HEADING: 'label_thirdparty_list_heading',
   ATTR_LABEL_THIRD_PARTY_LIST_TEXT: 'label_thirdparty_list_text',
   ATTR_LABEL_CUSTOM_THIRD_PARTY_HEADING: 'label_custom_thirdparty_heading',
@@ -24,6 +25,7 @@ export const OIL_LABELS = {
   ATTR_LABEL_CPC_PURPOSE_OPTOUT_PROCEED: 'label_cpc_purpose_optout_confirm_proceed',
   ATTR_LABEL_CPC_PURPOSE_OPTOUT_CANCEL: 'label_cpc_purpose_optout_confirm_cancel',
   ATTR_LABEL_CPC_FEATURE_DESC: 'label_cpc_feature_desc',
+  ATTR_LABEL_CPC_FEATURE_INTRO: 'label_cpc_feature_intro',
 
   // NO COOKIES ALLOWED labels
   ATTR_LABEL_NO_COOKIES_HEADING: 'label_nocookie_head',

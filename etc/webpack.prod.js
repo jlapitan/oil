@@ -28,7 +28,7 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   HMR: false
 });
 
-const BUNDLE_VERSION = process.env.npm_package_version + (process.env.SNAPSHOT || '-SNAPSHOT');
+const BUNDLE_VERSION = process.env.npm_package_version + (process.env.SNAPSHOT || '');
 const LATEST_RELEASE_VERSION = process.env.npm_package_version;
 
 console.info('Building BUNDLE_VERSION', BUNDLE_VERSION);
@@ -83,7 +83,7 @@ const config = webpackMerge(commonConfig, {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
      */
-    chunkFilename: `[id].${BUNDLE_VERSION}.chunk.js`
+    chunkFilename: `cmp.[id].${BUNDLE_VERSION}.chunk.js`
 
   },
 

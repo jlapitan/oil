@@ -1,7 +1,7 @@
 import { OilVersion, sendEventToHostSite, setGlobalOilObject } from './core_utils';
 import { logError, logInfo} from './core_log';
 import { getLocale} from './core_config';
-import { EVENT_NAME_HAS_OPTED_IN, EVENT_NAME_NO_COOKIES_ALLOWED } from './core_constants';
+import { EVENT_NAME_HAS_OPTED_IN, EVENT_NAME_NO_COOKIES_ALLOWED, OIL_DOMAIN_COOKIE_NAME } from './core_constants';
 import Cookie from 'js-cookie';
 
 /**
@@ -76,22 +76,26 @@ function isCookie(name) {
 
 function quickCheckOptIn() {
   return new Promise((resolve) => {
-    let soiOptIn = getOilCookieOptIn();
+    let soiCookie = getOilCookie();
+    let optin = false;
+    let monthInMilliseconds = 2592000000;
 
-    if (soiOptIn) {
+    if (soiCookie.opt_in && (Date.now() - soiCookie.dateSet) < monthInMilliseconds  ) {
       logInfo('User has given SOI permit, OIL not shown.');
+      optin = true;
     } else {
       logInfo('User has not opted in at all, OIL should be shown.');
+      optin = false;
     }
 
-    resolve(soiOptIn);
+    resolve(optin);
   });
 }
 
-function getOilCookieOptIn() {
-  if (isCookie('oil_data')) {
-    let cookieJson = Cookie.getJSON('oil_data');
-    return cookieJson.opt_in;
+function getOilCookie() {
+  if (isCookie(OIL_DOMAIN_COOKIE_NAME)) {
+    let cookieJson = Cookie.getJSON(OIL_DOMAIN_COOKIE_NAME);
+    return cookieJson;
   }
 
   return false;

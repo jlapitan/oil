@@ -27,7 +27,7 @@ function readConfiguration(configurationElement) {
  */
 function getConfiguration() {
   if (!getGlobalOilObject('CONFIG')) {
-    let configurationElement = document.querySelector('script[type="application/configuration"]#oil-configuration');
+    let configurationElement = document.querySelector('script[type="application/configuration"]#cmp-configuration');
     if (configurationElement === null) {
       logInfo('Using default config');
     }

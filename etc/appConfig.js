@@ -281,8 +281,8 @@ module.exports = {
   // }],
   entry: {
     // 'hub': path.resolve(sourcePath, 'hub.js'),
-    'oilstub': path.resolve(sourcePath, 'oilstub.js'),
-    'oil': path.resolve(sourcePath, 'oil.js'),
+    'cmp-stub': path.resolve(sourcePath, 'oilstub.js'),
+    'cmp': path.resolve(sourcePath, 'oil.js'),
     // 'oildevkit': path.resolve(sourcePath, 'scripts/dev-kit/dev-kit.js')
   },
   // copy: [{
@@ -301,6 +301,6 @@ module.exports = {
   //   from: path.resolve(sourcePath, 'demos/empty.html'),
   //   to: 'demos/empty.html'
   // }],
-  title: 'OIL',
+  title: 'CMP',
   additionalWebpackOptions: false
 };
